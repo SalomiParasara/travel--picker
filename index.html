@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel Picker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>✈️ Travel Picker</h1>
+    <p>Pick your route, dates, and vibe — we’ll suggest a trip idea.</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Plan your trip</h2>
+
+      <form class="grid-form" id="tripForm">
+        <!-- Route -->
+        <div class="field">
+          <label for="from">From</label>
+          <select id="from" name="from" required>
+            <option value="" selected disabled>Select city</option>
+            <option>Mumbai</option>
+            <option>Delhi</option>
+            <option>Bengaluru</option>
+            <option>Ahmedabad</option>
+            <option>Chennai</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="to">To</label>
+          <select id="to" name="to" required>
+            <option value="" selected disabled>Select city</option>
+            <option>Goa</option>
+            <option>Jaipur</option>
+            <option>Kerala</option>
+            <option>Manali</option>
+            <option>Andaman</option>
+          </select>
+        </div>
+
+        <!-- Dates -->
+        <div class="field">
+          <label for="depart">Depart</label>
+          <input id="depart" name="depart" type="date" required />
+        </div>
+
+        <div class="field">
+          <label for="return">Return</label>
+          <input id="return" name="return" type="date" />
+        </div>
+
+        <!-- Travellers -->
+        <div class="field">
+          <label for="travellers">Travellers</label>
+          <input id="travellers" name="travellers" type="number" min="1" value="1" />
+        </div>
+
+        <!-- Budget -->
+        <div class="field">
+          <label for="budget">Budget (₹)</label>
+          <input id="budget" name="budget" type="range" min="5000" max="200000" value="50000" />
+          <div class="range-hint">
+            <span>₹5k</span><span>₹200k</span>
+          </div>
+        </div>
+
+        <!-- Interests -->
+        <fieldset class="field field--full">
+          <legend>Interests</legend>
+          <label><input type="checkbox" name="interest" value="beach" /> Beach</label>
+          <label><input type="checkbox" name="interest" value="mountains" /> Mountains</label>
+          <label><input type="checkbox" name="interest" value="city" /> City</label>
+          <label><input type="checkbox" name="interest" value="food" /> Food</label>
+          <label><input type="checkbox" name="interest" value="heritage" /> Heritage</label>
+        </fieldset>
+
+        <!-- CTA -->
+        <div class="actions field--full">
+          <button type="submit">Find Trips</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card results" id="results">
+      <h2>Suggested trips</h2>
+      <p class="muted">Submit the form to see suggestions here.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© 2025 Travel Picker • Demo UI (no backend)</small>
+  </footer>
+
+  <!-- JS file -->
+  <script src="script.js"></script>
+</body>
+</html>
