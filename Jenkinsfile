@@ -36,25 +36,16 @@ pipeline {
                 echo "🚀 Deploying to GitHub Pages..."
                 withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
                     sh """
-                    git config user.name "Jenkins CI"
-                    git config user.email "ci-bot@example.com"
-                    git remote set-url origin https://$GIT_USER:$GIT_PASS@github.com/Eramsherasiya/quotes.git
-
-                    # Clean old worktrees
-                    git worktree prune
-
-                    # Use a unique worktree folder per build
-                    WORKTREE_DIR="/tmp/gh-pages-${BUILD_NUMBER}"
-                    rm -rf \$WORKTREE_DIR
-                    git worktree add -f \$WORKTREE_DIR gh-pages
-
-                    # Copy all website files
-                    cp -r index.html styles.css script.js assets/ \$WORKTREE_DIR/ 2>/dev/null || true
-                    cd \$WORKTREE_DIR
-
-                    git add .
-                    git commit -m "Deploy from Jenkins build ${BUILD_NUMBER}" || echo "No changes to commit"
-                    git push origin gh-pages
+                        git config user.name "Jenkins CI"
+                        git config user.email "ci-bot@example.com"
+                        git remote set-url origin https://$GIT_USER:$GIT_PASS@github.com/SalomiParasara/travel--picker.git
+                        
+                        # Add and commit changes
+                        git add -A
+                        git commit -m "Deploy from Jenkins build ${BUILD_NUMBER}" || echo "No changes to commit"
+                        
+                        # Push to main branch
+                        git push origin main
                     """
                 }
             }
