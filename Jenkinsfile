@@ -34,7 +34,7 @@ pipeline {
         stage('Deploy to GitHub Pages') {
             steps {
                 echo "🚀 Deploying to GitHub Pages..."
-                withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
+                withCredentials([usernamePassword(credentialsId: 'github-tokens', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
                     sh """
                         git config user.name "Jenkins CI"
                         git config user.email "ci-bot@example.com"
